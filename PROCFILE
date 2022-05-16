@@ -1,2 +1,2 @@
-web: python browser/server.py
+web: npm start
 
