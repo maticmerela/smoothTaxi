@@ -1,0 +1,12 @@
+h2{
+    /* color:aqua; */
+    padding-bottom: 2rem;
+}
+
+.container {
+    text-align:center;
+}
+
+#scoreDaily, #scoreOverall{
+    margin: 2rem;
+}
