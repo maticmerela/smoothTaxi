@@ -22,7 +22,7 @@ body {
 
 .mask .fill {
   clip: rect(0px, 150px, 300px, 0px);
-  background-color: #227ded;
+  background-color: rgb(37, 139, 175);
 }
 
 .circle-wrap .circle .mask {
@@ -52,7 +52,7 @@ body {
     text-align: center;
     margin-top: 28px;
     margin-left: 28px;
-    color: #1e51dc;
+    color: rgb(5, 98, 132);
     position: absolute;
     z-index: 100;
     font-weight: 700;
