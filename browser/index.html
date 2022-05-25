@@ -89,6 +89,28 @@
   <script>
       var tabelcaSpelca = [];
 
+      (async () => {
+                var classifier = new EdgeImpulseClassifier();
+                await classifier.init();
+
+                let project = classifier.getProjectInfo();
+                document.querySelector('h1').textContent = project.owner + ' / ' + project.name + ' (version ' + project.deploy_version + ')';
+
+                document.querySelector('#run-inference').onclick = () => {
+                  try {
+
+                // let features = document.querySelector('#features').value.split(',').map(x => Number(x.trim()));
+                var features = tabelcaSpelca;
+                console.log("features",features)
+                let res = classifier.classify(features);
+                document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
+              }
+              catch (ex) {
+                alert('Failed to classify: ' + (ex.message || ex.toString()));
+              }
+            };
+          })();
+
     
     // function incrementEventCount(){
     //   let counterElement = document.getElementById("num-observed-events")
@@ -147,31 +169,10 @@
         demo_button.classList.remove('btn-danger');
         is_running = false;
 
-        if (tabelcaSpelca.length == 540) {
-                (async () => {
-                var classifier = new EdgeImpulseClassifier();
-                await classifier.init();
-
-                let project = classifier.getProjectInfo();
-                document.querySelector('h1').textContent = project.owner + ' / ' + project.name + ' (version ' + project.deploy_version + ')';
-
-                document.querySelector('#run-inference').onclick = () => {
-                  try {
-
-                // let features = document.querySelector('#features').value.split(',').map(x => Number(x.trim()));
-                var features = tabelcaSpelca;
-                console.log("features",features)
-                let res = classifier.classify(features);
-                document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
-              }
-              catch (ex) {
-                alert('Failed to classify: ' + (ex.message || ex.toString()));
-              }
-            };
-          })();
-          is_running = true;
-          tabelcaSpelca = [];
-        }
+        // if (tabelcaSpelca.length == 540) {
+        //   is_running = true;
+        //   tabelcaSpelca = [];
+        // }
 
 
         
