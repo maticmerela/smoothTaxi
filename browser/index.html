@@ -102,7 +102,9 @@
       document.getElementById("test1").innerHTML = "smo v try";
       console.log("smo v tru")
       accelerometer = new Accelerometer({ frequency: 10 });
-      
+
+      document.getElementById("test3").innerHTML = accelerometer;
+
       accelerometer.onerror = (event) => {
         // Handle runtime errors.
         if (event.error.name === 'NotAllowedError') {
