@@ -73,7 +73,6 @@
       document.querySelector('#run-inference').onclick = () => {
         try {
           let features = document.querySelector('#features').value.split(',').map(x => Number(x.trim()));
-          console.log("features", features)
           let res = classifier.classify(features);
           document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
         }
@@ -210,6 +209,9 @@
     let is_running = false;
     let demo_button = document.getElementById("start_demo");
     demo_button.onclick = function(e) {
+      const tabelcaSpelca = [];
+      console.log("tabelcaSpelca",tabelcaSpelca)
+
       e.preventDefault();
       
       // Request permission for iOS 13+ devices
@@ -227,7 +229,6 @@
         demo_button.classList.remove('btn-danger');
         is_running = false;
       }else{
-      const tabelcaSpelca = [];
 
         window.addEventListener("devicemotion", handleMotion);
         document.getElementById("start_demo").innerHTML = "Stop demo";
