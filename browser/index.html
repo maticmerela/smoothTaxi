@@ -180,7 +180,6 @@
     
     function handleMotion(event) {
 
-      const tabelcaSpelca = [];
       tabelcaSpelca.push(event.accelerationIncludingGravity.x)
       tabelcaSpelca.push(event.accelerationIncludingGravity.y)
       tabelcaSpelca.push(event.accelerationIncludingGravity.z)
@@ -228,6 +227,8 @@
         demo_button.classList.remove('btn-danger');
         is_running = false;
       }else{
+      const tabelcaSpelca = [];
+
         window.addEventListener("devicemotion", handleMotion);
         document.getElementById("start_demo").innerHTML = "Stop demo";
         demo_button.classList.remove('btn-success');
