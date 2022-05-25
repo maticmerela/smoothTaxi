@@ -89,6 +89,7 @@
   <script>
       var tabelcaSpelca = [];
 
+    
       (async () => {
                 var classifier = new EdgeImpulseClassifier();
                 await classifier.init();
@@ -134,7 +135,11 @@
       if (tabelcaSpelca.length == 540) {
         document.getElementById("test3").innerHTML = "dolzina 540" 
           is_running = true;
-          //tabelcaSpelca = [];
+          var features = tabelcaSpelca;
+                console.log("features",features)
+                let res = classifier.classify(features);
+                document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
+          tabelcaSpelca = [];
         }
 
 
