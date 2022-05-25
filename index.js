@@ -18,7 +18,7 @@ app.get('/test', (req, res) => {
 
 
 
-app.use(express.static('sensor-js.xyz'))
+app.use(express.static('browser'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
