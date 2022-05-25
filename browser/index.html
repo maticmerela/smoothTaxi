@@ -108,6 +108,7 @@
       tabelcaSpelca.push(event.accelerationIncludingGravity.z)
 
       document.getElementById("test1").innerHTML = "namerjeni podatki " +tabelcaSpelca;
+      document.getElementById("test2").innerHTML = "dolzina tabelce " +tabelcaSpelca.length;
 
 
       updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
