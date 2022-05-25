@@ -130,7 +130,11 @@
       tabelcaSpelca.push(event.accelerationIncludingGravity.z)
 
       document.getElementById("test1").innerHTML = "namerjeni podatki " +tabelcaSpelca;
-      
+      document.getElementById("test2").innerHTML = "dolzina tabelce " +tabelcaSpelca.length;
+      if (tabelcaSpelca.length == 540) {
+          is_running = false;
+          //tabelcaSpelca = [];
+        }
 
 
       updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
@@ -180,11 +184,7 @@
         demo_button.classList.remove('btn-success');
         demo_button.classList.add('btn-danger');
         is_running = true;
-        document.getElementById("test2").innerHTML = "dolzina tabelce " +tabelcaSpelca.length;
-        // if (tabelcaSpelca.length == 540) {
-        //   is_running = true;
-        //   tabelcaSpelca = [];
-        // }
+        
 
       }
     };
