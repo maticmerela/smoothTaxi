@@ -22,10 +22,10 @@
   <h1></h1>
 
   <p>
-    <input type="text" id="features" placeholder="Paste your features here">
+    <!-- <input type="text" id="features" placeholder="Paste your features here"> -->
   </p>
   <p>
-    <button id="run-inference">Run inference</button>
+    <button id="run-inference">Klasificiraj</button>
   </p>
   <p id="results"></p>
 
@@ -35,17 +35,17 @@
   <p id="test4"></p>
 
 <div class="p-3 mb-2 bg-secondary" id="demo-div">
-<a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
-<p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning" id="num-observed-events">0</span></p>
+<a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Začni meriti</a>
+<!-- <p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning" id="num-observed-events">0</span></p> -->
 
 
-<h4>Accelerometer</h4>
+<!-- <h4>Accelerometer</h4>
 <ul>
   <li>X-axis: <span id="Accelerometer_x">0</span><span> m/s<sup>2</sup></span></li>
   <li>Y-axis: <span id="Accelerometer_y">0</span><span> m/s<sup>2</sup></span></li>
   <li>Z-axis: <span id="Accelerometer_z">0</span><span> m/s<sup>2</sup></span></li>
   <li>Data Interval: <span id="Accelerometer_i">0</span><span> ms</span></li>
-</ul>
+</ul> -->
 
 <h4>Accelerometer including gravity</h4>
 
@@ -85,97 +85,16 @@
       };
     })();
   </script>
-  <!-- <script>
-    let acl = new Accelerometer({ frequency: 60 });
-    acl.addEventListener('reading', () => {
-      document.getElementById("test1").innerHTML =  acl.x;
-      document.getElementById("test2").innerHTML =  acl.y;
-      document.getElementById("test3").innerHTML =  acl.z;
-
-      console.log("Acceleration along the X-axis " + acl.x);
-      console.log("Acceleration along the Y-axis " + acl.y);
-      console.log("Acceleration along the Z-axis " + acl.z);
-    });
-
-    acl.start();
-  </script> -->
-
-  <!-- <script>
-
-    function getAccel(){
-      DeviceMotionEvent.requestPermission().then(response => {
-          if (response == 'granted') {
-          // Add a listener to get smartphone acceleration 
-              // in the XYZ axes (units in m/s^2)
-              window.addEventListener('devicemotion', (event) => {
-                  console.log(event);
-                  document.getElementById("test3").innerHTML =  event;
-
-              });
-         // Add a listener to get smartphone orientation 
-             // in the alpha-beta-gamma axes (units in degrees)
-              window.addEventListener('deviceorientation',(event) => {
-                  console.log(event);
-                  document.getElementById("test2").innerHTML =  event;
-                  
-              });
-          }
-      });
-  }
-  </script> -->
-
-  <!-- <script>
-    let accelerometer = null;
-    try {
-      document.getElementById("test1").innerHTML = "smo v try";
-      console.log("smo v tru")
-      accelerometer = new Accelerometer({ frequency: 10 });
-
-      document.getElementById("test4").innerHTML = accelerometer;
-
-      accelerometer.onerror = (event) => {
-        // Handle runtime errors.
-        if (event.error.name === 'NotAllowedError') {
-          document.getElementById("test2").innerHTML = "Permission to access sensor was denied.";
-          console.log('Permission to access sensor was denied.');
-        } else if (event.error.name === 'NotReadableError') {
-          console.log('Cannot connect to the sensor.');
-        }
-      };
-      accelerometer.onreading = (e) => {
-        document.getElementById("test3").innerHTML = e;
-
-        console.log(e);
-      };
-      accelerometer.start();
-    } catch (error) {
-      console.log("smo v catch")
-      // Handle construction errors.
-      if (error.name === 'SecurityError') {
-        document.getElementById("test2").innerHTML =  "SecurityError";
-
-        console.log('Sensor construction was blocked by the Permissions Policy.');
-      } else if (error.name === 'ReferenceError') {
-        document.getElementById("test2").innerHTML =  "ReferenceError";
-
-        console.log('Sensor is not supported by the User Agent.');
-      } else {
-        document.getElementById("test2").innerHTML = error;
-        
-        throw error;
-      }
-    }
-  </script> -->
 
   <script>
       var tabelcaSpelca = [];
 
     
-    function incrementEventCount(){
-      let counterElement = document.getElementById("num-observed-events")
-      let eventCount = parseInt(counterElement.innerHTML)
-      counterElement.innerHTML = eventCount + 1;
-    }
+    // function incrementEventCount(){
+    //   let counterElement = document.getElementById("num-observed-events")
+    //   let eventCount = parseInt(counterElement.innerHTML)
+    //   counterElement.innerHTML = eventCount + 1;
+    // }
     
     function updateFieldIfNotNull(fieldName, value, precision=10){
       if (value != null)
@@ -188,27 +107,19 @@
       tabelcaSpelca.push(event.accelerationIncludingGravity.y)
       tabelcaSpelca.push(event.accelerationIncludingGravity.z)
 
-
-
-
-
-      document.getElementById("test1").innerHTML = "mama " +tabelcaSpelca;
+      document.getElementById("test1").innerHTML = "namerjeni podatki " +tabelcaSpelca;
 
 
       updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
       updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
       updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
     
-      updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
-      updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
-      updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
+      // updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
+      // updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
+      // updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
     
       updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
-    
-      updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
-      updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
-      updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
-      incrementEventCount();
+  
     }
     
     let is_running = false;
