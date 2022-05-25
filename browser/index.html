@@ -57,7 +57,7 @@
       };
     })();
   </script>
-  <script>
+  <!-- <script>
     let acl = new Accelerometer({ frequency: 60 });
     acl.addEventListener('reading', () => {
       document.getElementById("test1").innerHTML =  acl.x;
@@ -70,6 +70,30 @@
     });
 
     acl.start();
+  </script> -->
+
+  <script>
+
+    function getAccel(){
+      DeviceMotionEvent.requestPermission().then(response => {
+          if (response == 'granted') {
+          // Add a listener to get smartphone acceleration 
+              // in the XYZ axes (units in m/s^2)
+              window.addEventListener('devicemotion', (event) => {
+                  console.log(event);
+                  document.getElementById("test3").innerHTML =  event;
+
+              });
+         // Add a listener to get smartphone orientation 
+             // in the alpha-beta-gamma axes (units in degrees)
+              window.addEventListener('deviceorientation',(event) => {
+                  console.log(event);
+                  document.getElementById("test2").innerHTML =  event;
+                  
+              });
+          }
+      });
+  }
   </script>
 
 </body>
