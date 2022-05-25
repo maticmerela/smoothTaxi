@@ -147,15 +147,6 @@
         demo_button.classList.remove('btn-danger');
         is_running = false;
 
-
-        
-      }else{
-
-        window.addEventListener("devicemotion", handleMotion);
-        document.getElementById("start_demo").innerHTML = "Stop demo";
-        demo_button.classList.remove('btn-success');
-        demo_button.classList.add('btn-danger');
-        is_running = true;
         if (tabelcaSpelca.length == 540) {
                 (async () => {
                 var classifier = new EdgeImpulseClassifier();
@@ -178,9 +169,20 @@
               }
             };
           })();
-          is_running = false;
+          is_running = true;
           tabelcaSpelca = [];
         }
+
+
+        
+      }else{
+
+        window.addEventListener("devicemotion", handleMotion);
+        document.getElementById("start_demo").innerHTML = "Stop demo";
+        demo_button.classList.remove('btn-success');
+        demo_button.classList.add('btn-danger');
+        is_running = true;
+        
         
 
       }
