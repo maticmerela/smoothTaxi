@@ -1,275 +1,70 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <title>Browser inference demo</title>
+  <meta charset="utf-8">
+  <title>Browser inference demo</title>
 
-    <style>
-        #features {
-            width: 50%;
-            font-size: 18px;
-        }
+  <style>
+    #features {
+      width: 50%;
+      font-size: 18px;
+    }
 
-        #results {
-            font-family: monospace;
-            white-space: pre;
-        }
-    </style>
+    #results {
+      font-family: monospace;
+      white-space: pre;
+    }
+  </style>
 </head>
+
 <body>
-    <h1></h1>
+  <h1></h1>
 
-    <p>
-        <input type="text" id="features" placeholder="Paste your features here">
-    </p>
-    <p>
-        <button id="run-inference">Run inference</button>
-    </p>
-    <p id="results"></p>
+  <p>
+    <input type="text" id="features" placeholder="Paste your features here">
+  </p>
+  <p>
+    <button id="run-inference">Run inference</button>
+  </p>
+  <p id="results"></p>
 
-    <p id="test"></p>
-    <!-- <button id="accelPermsButton"  style="height:50px;" onclick="getAccel()"><h1>Get Accelerometer Permissions</h1></button>
-    </p>
-
-    <div class="p-3 mb-2 bg-secondary" id="demo-div">
-        <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
-        <p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning" id="num-observed-events">0</span></p>
-
-    <h4 style="margin-top:0.75rem;">Orientation</h4>
-<ul>
-  <li>X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span></li>
-  <li>Y-axis (&gamma;): <span id="Orientation_g">0</span><span>&deg;</span></li>
-  <li>Z-axis (&alpha;): <span id="Orientation_a">0</span><span>&deg;</span></li>
-</ul>
-
-<h4>Accelerometer</h4>
-<ul>
-  <li>X-axis: <span id="Accelerometer_x">0</span><span> m/s<sup>2</sup></span></li>
-  <li>Y-axis: <span id="Accelerometer_y">0</span><span> m/s<sup>2</sup></span></li>
-  <li>Z-axis: <span id="Accelerometer_z">0</span><span> m/s<sup>2</sup></span></li>
-  <li>Data Interval: <span id="Accelerometer_i">0</span><span> ms</span></li>
-</ul>
-
-<h4>Accelerometer including gravity</h4>
-
-<ul>
-  <li>X-axis: <span id="Accelerometer_gx">0</span><span> m/s<sup>2</sup></span></li>
-  <li>Y-axis: <span id="Accelerometer_gy">0</span><span> m/s<sup>2</sup></span></li>
-  <li>Z-axis: <span id="Accelerometer_gz">0</span><span> m/s<sup>2</sup></span></li>
-</ul>
-
-<h4>Gyroscope</h4> -->
-<!-- <ul>
-  <li>X-axis: <span id="Gyroscope_x">0</span><span>&deg;/s</span></li>
-  <li>Y-axis: <span id="Gyroscope_y">0</span><span>&deg;/s</span></li>
-  <li>Z-axis: <span id="Gyroscope_z">0</span><span>&deg;/s</span></li>
-</ul> -->
+  <p id="test"></p>
 
 
+  <script src="edge-impulse-standalone.js"></script>
+  <script src="run-impulse.js"></script>
+  <script>
+    (async () => {
+      var classifier = new EdgeImpulseClassifier();
+      await classifier.init();
 
-    <script src="edge-impulse-standalone.js"></script>
-    <script src="run-impulse.js"></script>
-    <script>
-        (async () => {
-            var classifier = new EdgeImpulseClassifier();
-            await classifier.init();
+      let project = classifier.getProjectInfo();
+      document.querySelector('h1').textContent = project.owner + ' / ' + project.name + ' (version ' + project.deploy_version + ')';
 
-            let project = classifier.getProjectInfo();
-            document.querySelector('h1').textContent = project.owner + ' / ' + project.name + ' (version ' + project.deploy_version + ')';
-
-            document.querySelector('#run-inference').onclick = () => {
-                try {
-                    let features = document.querySelector('#features').value.split(',').map(x => Number(x.trim()));
-                    let res = classifier.classify(features);
-                    document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
-                }
-                catch (ex) {
-                    alert('Failed to classify: ' + (ex.message || ex.toString()));
-                }
-            };
-        })();
-    </script>
-    <script>
-        
-        // let acl = new Accelerometer({frequency: 60});
-        // var elem = document.getElementById('test');
-        // //elem.innerHTML = acl.x;
-        // acl.addEventListener('reading', () => {
-        // elem.innerHTML = acl.x;
-        // console.log("Acceleration along the X-axis " + acl.x);
-        // console.log("zivjo");
-        // console.log("Acceleration along the Y-axis " + acl.y);
-        // console.log("Acceleration along the Z-axis " + acl.z);
-        // // var elem = document.getElementById('test');
-        // // elem.innerHTML = "haha";
-        // });
-
-        // acl.start();
-
-
-        function getAccel(){
-        DeviceMotionEvent.requestPermission().then(response => {
-        if (response == 'granted') {
-            console.log("accelerometer permission granted");
-            // Do stuff here
+      document.querySelector('#run-inference').onclick = () => {
+        try {
+          let features = document.querySelector('#features').value.split(',').map(x => Number(x.trim()));
+          let res = classifier.classify(features);
+          document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
         }
+        catch (ex) {
+          alert('Failed to classify: ' + (ex.message || ex.toString()));
+        }
+      };
+    })();
+  </script>
+  <script>
+    let acl = new Accelerometer({ frequency: 60 });
+    acl.addEventListener('reading', () => {
+      console.log("Acceleration along the X-axis " + acl.x);
+      console.log("Acceleration along the Y-axis " + acl.y);
+      console.log("Acceleration along the Z-axis " + acl.z);
     });
-}
 
+    acl.start();
+  </script>
 
-    </script>
-    <!-- <script>
-
-        function handleOrientation(event) {
-          updateFieldIfNotNull('Orientation_a', event.alpha);
-          updateFieldIfNotNull('Orientation_b', event.beta);
-          updateFieldIfNotNull('Orientation_g', event.gamma);
-          incrementEventCount();
-        }
-        
-        function incrementEventCount(){
-          let counterElement = document.getElementById("num-observed-events")
-          let eventCount = parseInt(counterElement.innerHTML)
-          counterElement.innerHTML = eventCount + 1;
-        }
-        
-        function updateFieldIfNotNull(fieldName, value, precision=10){
-          if (value != null)
-            document.getElementById(fieldName).innerHTML = value.toFixed(precision);
-        }
-        
-        function handleMotion(event) {
-          updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-          updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-          updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
-        
-          updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
-          updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
-          updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
-        
-          updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
-        
-          updateFieldIfNotNull('Gyroscope_z', event.rotationRate.alpha);
-          updateFieldIfNotNull('Gyroscope_x', event.rotationRate.beta);
-          updateFieldIfNotNull('Gyroscope_y', event.rotationRate.gamma);
-          incrementEventCount();
-        }
-        
-        let is_running = false;
-        let demo_button = document.getElementById("start_demo");
-        demo_button.onclick = function(e) {
-          e.preventDefault();
-          
-          // Request permission for iOS 13+ devices
-          if (
-            DeviceMotionEvent &&
-            typeof DeviceMotionEvent.requestPermission === "function"
-          ) {
-            DeviceMotionEvent.requestPermission();
-          }
-          
-          if (is_running){
-            window.removeEventListener("devicemotion", handleMotion);
-            window.removeEventListener("deviceorientation", handleOrientation);
-            demo_button.innerHTML = "Start demo";
-            demo_button.classList.add('btn-success');
-            demo_button.classList.remove('btn-danger');
-            is_running = false;
-          }else{
-            window.addEventListener("devicemotion", handleMotion);
-            window.addEventListener("deviceorientation", handleOrientation);
-            document.getElementById("start_demo").innerHTML = "Stop demo";
-            demo_button.classList.remove('btn-success');
-            demo_button.classList.add('btn-danger');
-            is_running = true;
-          }
-        }; -->
-<!--         
-        /*
-        Light and proximity are not supported anymore by mainstream browsers.
-        window.addEventListener('devicelight', function(e) {
-           document.getElementById("DeviceLight").innerHTML="AmbientLight current Value: "+e.value+" Max: "+e.max+" Min: "+e.min;
-        });
-        
-        window.addEventListener('lightlevel', function(e) {
-           document.getElementById("Lightlevel").innerHTML="Light level: "+e.value;
-        });
-        
-        window.addEventListener('deviceproximity', function(e) {
-           document.getElementById("DeviceProximity").innerHTML="DeviceProximity current Value: "+e.value+" Max: "+e.max+" Min: "+e.min;
-        });
-        
-        window.addEventListener('userproximity', function(event) {
-           document.getElementById("UserProximity").innerHTML="UserProximity: "+event.near;
-        });
-        */ -->
-        
-        <!-- </script> -->
-
-        <!-- d e v i c e m o t i o n   t r y -->
-        <!-- <script>
-          window.addEventListener("devicemotion", handleMotionEvent, true);
-
-          document.getElementById("test").innerHTML= "hihi";
-
-          function handleMotionEvent(event) {
-
-            var x = event.accelerationIncludingGravity.x;
-            var y = event.accelerationIncludingGravity.y;
-            var z = event.accelerationIncludingGravity.z;
-
-            // Do something awesome.
-            document.getElementById("test").innerHTML= x;
-            
-          }
-        </script> -->
-        <script>
-          
-          document.getElementById("test").innerHTML= "zacetk script";
-
-          let accelerometer = null;
-          try {
-            accelerometer = new Accelerometer({ frequency: 10 });
-            document.getElementById("test").innerHTML=accelerometer;
-            console.log("zivjo smo v try", accelerometer);
-          // document.getElementById("test").innerHTML= "smo v try";
-
-          accelerometer.onerror = (event) => {
-          console.log("zivjo smo v onerror");
-
-            // Handle runtime errors.
-            if (event.error.name === 'NotAllowedError') {
-              console.log('Permission to access sensor was denied.');
-              document.getElementById("test").innerHTML= "Permission to access sensor was denied.";
-
-            } else if (event.error.name === 'NotReadableError') {
-              console.log('Cannot connect to the sensor.');
-              document.getElementById("test").innerHTML= "annot connect to the sensor";
-
-            }
-          };
-          accelerometer.onreading = (e) => {
-            
-            console.log(e);
-            document.getElementById("test").innerHTML= e;
-            
-          };
-          accelerometer.start();
-        } catch (error) {
-          console.log('smo v catch');
-          document.getElementById("test").innerHTML= error;
-
-
-          // Handle construction errors.
-          if (error.name === 'SecurityError') {
-            console.log('Sensor construction was blocked by the Permissions Policy.');
-          } else if (error.name === 'ReferenceError') {
-            console.log('Sensor is not supported by the User Agent.');
-          } else {
-            throw error;
-          }
-        }
-
-        </script>
 </body>
+
 </html>
