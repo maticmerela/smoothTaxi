@@ -32,6 +32,8 @@
   <p id="test1"></p>
   <p id="test2"></p>
   <p id="test3"></p>
+  <p id="test4"></p>
+
 
 
 
@@ -103,7 +105,7 @@
       console.log("smo v tru")
       accelerometer = new Accelerometer({ frequency: 10 });
 
-      document.getElementById("test3").innerHTML = accelerometer;
+      document.getElementById("test4").innerHTML = accelerometer;
 
       accelerometer.onerror = (event) => {
         // Handle runtime errors.
