@@ -169,10 +169,7 @@
         demo_button.classList.remove('btn-danger');
         is_running = false;
 
-        if (tabelcaSpelca.length == 540) {
-          is_running = true;
-          tabelcaSpelca = [];
-        }
+        
 
 
         
@@ -184,7 +181,10 @@
         demo_button.classList.add('btn-danger');
         is_running = true;
         
-        
+        if (tabelcaSpelca.length == 540) {
+          is_running = true;
+          tabelcaSpelca = [];
+        }
 
       }
     };
