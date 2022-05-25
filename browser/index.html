@@ -165,6 +165,8 @@
   </script> -->
 
   <script>
+      var tabelcaSpelca = [];
+
     
     function incrementEventCount(){
       let counterElement = document.getElementById("num-observed-events")
@@ -209,7 +211,6 @@
     let is_running = false;
     let demo_button = document.getElementById("start_demo");
     demo_button.onclick = function(e) {
-      const tabelcaSpelca = [];
       console.log("tabelcaSpelca",tabelcaSpelca)
 
       e.preventDefault();
