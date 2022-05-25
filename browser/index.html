@@ -72,7 +72,10 @@
 
       document.querySelector('#run-inference').onclick = () => {
         try {
-          let features = document.querySelector('#features').value.split(',').map(x => Number(x.trim()));
+
+          // let features = document.querySelector('#features').value.split(',').map(x => Number(x.trim()));
+          var features = tabelcaSpelca;
+          console.log("features",features)
           let res = classifier.classify(features);
           document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
         }
@@ -229,6 +232,9 @@
         demo_button.classList.add('btn-success');
         demo_button.classList.remove('btn-danger');
         is_running = false;
+
+
+        
       }else{
 
         window.addEventListener("devicemotion", handleMotion);
@@ -236,6 +242,8 @@
         demo_button.classList.remove('btn-success');
         demo_button.classList.add('btn-danger');
         is_running = true;
+        
+
       }
     };
     
