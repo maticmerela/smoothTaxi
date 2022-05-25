@@ -29,7 +29,10 @@
   </p>
   <p id="results"></p>
 
-  <p id="test"></p>
+  <p id="test1"></p>
+  <p id="test2"></p>
+  <p id="test3"></p>
+
 
 
   <script src="edge-impulse-standalone.js"></script>
@@ -57,6 +60,10 @@
   <script>
     let acl = new Accelerometer({ frequency: 60 });
     acl.addEventListener('reading', () => {
+      document.getElementById("test1").innerHTML =  acl.x;
+      document.getElementById("test2").innerHTML =  acl.y;
+      document.getElementById("test3").innerHTML =  acl.z;
+
       console.log("Acceleration along the X-axis " + acl.x);
       console.log("Acceleration along the Y-axis " + acl.y);
       console.log("Acceleration along the Z-axis " + acl.z);
