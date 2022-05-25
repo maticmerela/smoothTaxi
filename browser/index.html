@@ -72,7 +72,7 @@
     acl.start();
   </script> -->
 
-  <script>
+  <!-- <script>
 
     function getAccel(){
       DeviceMotionEvent.requestPermission().then(response => {
@@ -94,6 +94,47 @@
           }
       });
   }
+  </script> -->
+
+  <script>
+    let accelerometer = null;
+    try {
+      document.getElementById("test1").innerHTML = "smo v try";
+      console.log("smo v tru")
+      accelerometer = new Accelerometer({ frequency: 10 });
+      
+      accelerometer.onerror = (event) => {
+        // Handle runtime errors.
+        if (event.error.name === 'NotAllowedError') {
+          document.getElementById("test2").innerHTML = "Permission to access sensor was denied.";
+          console.log('Permission to access sensor was denied.');
+        } else if (event.error.name === 'NotReadableError') {
+          console.log('Cannot connect to the sensor.');
+        }
+      };
+      accelerometer.onreading = (e) => {
+        document.getElementById("test3").innerHTML = e;
+
+        console.log(e);
+      };
+      accelerometer.start();
+    } catch (error) {
+      console.log("smo v catch")
+      // Handle construction errors.
+      if (error.name === 'SecurityError') {
+        document.getElementById("test2").innerHTML =  "SecurityError";
+
+        console.log('Sensor construction was blocked by the Permissions Policy.');
+      } else if (error.name === 'ReferenceError') {
+        document.getElementById("test2").innerHTML =  "ReferenceError";
+
+        console.log('Sensor is not supported by the User Agent.');
+      } else {
+        document.getElementById("test2").innerHTML = error;
+        
+        throw error;
+      }
+    }
   </script>
 
 </body>
