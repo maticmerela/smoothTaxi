@@ -66,9 +66,9 @@
 
 
       document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
-      max, max_label = getMax(res);
+      // max, max_label = getMax(res);
       document.getElementById("test1").innerHTML = parseInt(res.results[i].value);
-      document.getElementById("test2").innerHTML = max_label;
+      // document.getElementById("test2").innerHTML = max_label;
     }
 
     function handleMotion(event) {
