@@ -30,7 +30,7 @@
   <p id="results"></p>
 
   <p id="test1"></p>
-  <p id="test2">ej dude:</p>
+  <p id="test2"></p>
   <p id="test3"></p>
   <p id="test4"></p>
 
@@ -96,7 +96,6 @@
 
       let project = classifier.getProjectInfo();
       document.querySelector('h1').textContent = project.owner + ' / ' + project.name + ' (version ' + project.deploy_version + ')';
-      // o d  p r e j
 
       document.querySelector('#run-inference').onclick = () => {
         try {
@@ -111,26 +110,6 @@
           alert('Failed to classify: ' + (ex.message || ex.toString()));
         }
       };
-
-      document.getElementById("test4").innerHTML = " async dolzina tabelce" + tabelcaSpelca.length;
-
-      // if (tabelcaSpelca.length > 540) {
-      //   document.getElementById("test3").innerHTML = "dolzina 540"
-
-      //   try {
-
-      //     // let features = document.querySelector('#features').value.split(',').map(x => Number(x.trim()));
-      //     var features = tabelcaSpelca;
-      //     document.getElementById("test4").innerHTML = "features po 540: " + features;
-
-      //     console.log("features", features)
-      //     let res = classifier.classify(features);
-      //     document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
-      //   }
-      //   catch (ex) {
-      //     alert('Failed to classify: ' + (ex.message || ex.toString()));
-      //   }
-      // };
     })();
 
 
@@ -151,19 +130,19 @@
       tabelcaSpelca.push(event.accelerationIncludingGravity.y)
       tabelcaSpelca.push(event.accelerationIncludingGravity.z)
 
-      // document.getElementById("test1").innerHTML = "namerjeni podatki " + tabelcaSpelca;
-      // document.getElementById("test2").innerHTML = "dolzina tabelce " + tabelcaSpelca.length;
-      // if (tabelcaSpelca.length == 540) {
+      document.getElementById("test1").innerHTML = "namerjeni podatki " + tabelcaSpelca;
+      document.getElementById("test2").innerHTML = "dolzina tabelce " + tabelcaSpelca.length;
+      // if (tabelcaSpelca.length > 540) {
       //   document.getElementById("test3").innerHTML = "dolzina 540"
       //   is_running = false;
       //   var features = tabelcaSpelca;
-      //   document.getElementById("test4").innerHTML = "features po 540: " + features;
+      //   document.getElementById("test4").innerHTML = "features" + features;
 
       //   console.log("features", features)
       //   let res = classifier.classify(features);
       //   document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
       //   tabelcaSpelca = [];
-      //   document.getElementById("test4").innerHTML = "dolzina tabelce nova" +tabelcaSpelca.length;
+      //   //document.getElementById("test4").innerHTML = "dolzina tabelce nova" +tabelcaSpelca.length;
       // }
 
 
