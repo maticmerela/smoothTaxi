@@ -64,6 +64,8 @@
       classifier2.init();
       let res = classifier2.classify(tabelcaSpelca);
 
+      document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
+
       var max = 0;
       var max_label;
       for (var i = 0; i < res.results.length; i++) {
@@ -76,7 +78,7 @@
       document.getElementById("test1").innerHTML = max;
       document.getElementById("test2").innerHTML = max_label;
 
-      document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
+      
 
       // okay
     }
