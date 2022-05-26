@@ -127,15 +127,17 @@
 
     function klasificiraj(tabelcaSpelca) {
       document.getElementById("test4").innerHTML = "smo v klasificijraj";
-      
+
       var classifier2 = new EdgeImpulseClassifier();
       classifier2.init();
-      var features = tabelcaSpelca;
-      console.log("features", features)
-      let res = classifier2.classify(features);
+      // var features = tabelcaSpelca;
+      // console.log("features", features)
+      let res = classifier2.classify(tabelcaSpelca);
       document.getElementById("test3").innerHTML = "result po klasifikaciji ", res;
 
       document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
+
+      tabelcaSpelca = [];
 
     }
 
@@ -147,6 +149,8 @@
 
       document.getElementById("test1").innerHTML = "namerjeni podatki " + tabelcaSpelca;
       document.getElementById("test2").innerHTML = "dolzina tabelce " + tabelcaSpelca.length;
+
+
       if (tabelcaSpelca.length > 540) {
           document.getElementById("test1").innerHTML = "smo v ifu"
 
