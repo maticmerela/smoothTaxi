@@ -110,7 +110,10 @@
       //     alert('Failed to classify: ' + (ex.message || ex.toString()));
       //   }
       // };
-      if (tabelcaSpelca.length == 540) {
+
+      document.getElementById("test4").innerHTML = " async dolzina tabelce" + tabelcaSpelca.length;
+
+      if (tabelcaSpelca.length > 540) {
         document.getElementById("test3").innerHTML = "dolzina 540"
 
         try {
