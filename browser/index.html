@@ -134,14 +134,14 @@
       document.getElementById("test2").innerHTML = "dolzina tabelce " + tabelcaSpelca.length;
       if (tabelcaSpelca.length > 540) {
         document.getElementById("test3").innerHTML = "dolzina 540"
-        is_running = false;
-        var features = tabelcaSpelca;
-        document.getElementById("test4").innerHTML = "features" + features;
+        // is_running = false;
+        // var features = tabelcaSpelca;
+        // document.getElementById("test4").innerHTML = "features" + features;
 
-        console.log("features", features)
-        let res = classifier.classify(features);
-        document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
-        tabelcaSpelca = [];
+        // console.log("features", features)
+        // let res = classifier.classify(features);
+        // document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
+        // tabelcaSpelca = [];
         //document.getElementById("test4").innerHTML = "dolzina tabelce nova" +tabelcaSpelca.length;
       }
 
