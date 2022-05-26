@@ -1,11 +1,11 @@
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
+// var slider = document.getElementById("myRange");
+// var output = document.getElementById("demo");
 // output.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
-slider.oninput = function () {
-  output.innerHTML = this.value;
-};
+// slider.oninput = function () {
+//   output.innerHTML = this.value;
+// };
 
 var tabelcaSpelca = [];
 
@@ -37,10 +37,8 @@ function klasificiraj(tabelcaSpelca) {
     }
   }
 
-  // CHECK REZ 
-
-  // document.getElementById("test1").innerHTML = max;
-  // document.getElementById("test2").innerHTML = max_label;
+  document.getElementById("test1").innerHTML = max;
+  document.getElementById("test2").innerHTML = max_label;
 
 
 
@@ -112,13 +110,13 @@ demo_button.onclick = function (e) {
 
   if (is_running) {
     window.removeEventListener("devicemotion", handleMotion);
-    demo_button.innerHTML = "Start demo";
+    demo_button.innerHTML = "Začni meriti";
     demo_button.classList.add("btn-success");
     demo_button.classList.remove("btn-danger");
     is_running = false;
   } else {
     window.addEventListener("devicemotion", handleMotion);
-    document.getElementById("start_demo").innerHTML = "koncaj merjenje";
+    document.getElementById("start_demo").innerHTML = "Koncaj meriti";
     demo_button.classList.remove("btn-success");
     demo_button.classList.add("btn-danger");
     is_running = true;
