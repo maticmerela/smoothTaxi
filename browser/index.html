@@ -30,7 +30,7 @@
   <p id="results"></p>
 
   <p id="test1"></p>
-  <p id="test2"></p>
+  <p id="test2">ej dude:</p>
   <p id="test3"></p>
   <p id="test4"></p>
 
@@ -130,7 +130,7 @@
       tabelcaSpelca.push(event.accelerationIncludingGravity.y)
       tabelcaSpelca.push(event.accelerationIncludingGravity.z)
 
-      document.getElementById("test1").innerHTML = "namerjeni podatki " + tabelcaSpelca;
+      // document.getElementById("test1").innerHTML = "namerjeni podatki " + tabelcaSpelca;
       document.getElementById("test2").innerHTML = "dolzina tabelce " + tabelcaSpelca.length;
       if (tabelcaSpelca.length > 540) {
         document.getElementById("test3").innerHTML = "dolzina 540"
