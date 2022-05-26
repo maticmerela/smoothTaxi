@@ -50,9 +50,9 @@
     function getMax(json) {
       var max = 0;
       var max_label;
-      for (var i = 0; i < Integer.parseInt(json.results.length); i++) {
-        if (max == 0 || Integer.parseInt(json.results[i].value) > max) {
-          max = Integer.parseInt(json.results[i].value);
+      for (var i = 0; i < json.results.length; i++) {
+        if (max == 0 || json.results[i].value > max) {
+          max = json.results[i].value;
           max_label = json.results[i].label;
         }
       }
@@ -87,17 +87,19 @@
       }
 
 
-      updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-      updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-      updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
+      // updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
+      // updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
+      // updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
 
       // updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
       // updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
       // updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
 
-      updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
+      // updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
 
     }
+
+    // START OF CYCLE
 
     let is_running = false;
     let demo_button = document.getElementById("start_demo");
