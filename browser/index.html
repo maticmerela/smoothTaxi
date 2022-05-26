@@ -34,12 +34,12 @@
   <p id="test3"></p>
   <p id="test4"></p>
 
-<div class="p-3 mb-2 bg-secondary" id="demo-div">
-<a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Začni meriti</a>
-<!-- <p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning" id="num-observed-events">0</span></p> -->
+  <div class="p-3 mb-2 bg-secondary" id="demo-div">
+    <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Začni meriti</a>
+    <!-- <p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning" id="num-observed-events">0</span></p> -->
 
 
-<!-- <h4>Accelerometer</h4>
+    <!-- <h4>Accelerometer</h4>
 <ul>
   <li>X-axis: <span id="Accelerometer_x">0</span><span> m/s<sup>2</sup></span></li>
   <li>Y-axis: <span id="Accelerometer_y">0</span><span> m/s<sup>2</sup></span></li>
@@ -47,15 +47,15 @@
   <li>Data Interval: <span id="Accelerometer_i">0</span><span> ms</span></li>
 </ul> -->
 
-<h4>Accelerometer including gravity</h4>
+    <h4>Accelerometer including gravity</h4>
 
-<ul>
-  <li>X-axis: <span id="Accelerometer_gx">0</span><span> m/s<sup>2</sup></span></li>
-  <li>Y-axis: <span id="Accelerometer_gy">0</span><span> m/s<sup>2</sup></span></li>
-  <li>Z-axis: <span id="Accelerometer_gz">0</span><span> m/s<sup>2</sup></span></li>
-</ul>
+    <ul>
+      <li>X-axis: <span id="Accelerometer_gx">0</span><span> m/s<sup>2</sup></span></li>
+      <li>Y-axis: <span id="Accelerometer_gy">0</span><span> m/s<sup>2</sup></span></li>
+      <li>Z-axis: <span id="Accelerometer_gz">0</span><span> m/s<sup>2</sup></span></li>
+    </ul>
 
-</div>
+  </div>
 
 
 
@@ -87,82 +87,84 @@
   </script> -->
 
   <script>
-      var tabelcaSpelca = [];
+    var tabelcaSpelca = [];
 
-    
-      (async () => {
-                var classifier = new EdgeImpulseClassifier();
-                await classifier.init();
 
-                let project = classifier.getProjectInfo();
-                document.querySelector('h1').textContent = project.owner + ' / ' + project.name + ' (version ' + project.deploy_version + ')';
+    (async () => {
+      var classifier = new EdgeImpulseClassifier();
+      await classifier.init();
 
-                document.querySelector('#run-inference').onclick = () => {
-                  try {
+      let project = classifier.getProjectInfo();
+      document.querySelector('h1').textContent = project.owner + ' / ' + project.name + ' (version ' + project.deploy_version + ')';
 
-                // let features = document.querySelector('#features').value.split(',').map(x => Number(x.trim()));
-                var features = tabelcaSpelca;
-                console.log("features",features)
-                let res = classifier.classify(features);
-                document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
-              }
-              catch (ex) {
-                alert('Failed to classify: ' + (ex.message || ex.toString()));
-              }
-            };
-          })();
+      document.querySelector('#run-inference').onclick = () => {
+        try {
 
-    
+          // let features = document.querySelector('#features').value.split(',').map(x => Number(x.trim()));
+          var features = tabelcaSpelca;
+          console.log("features", features)
+          let res = classifier.classify(features);
+          document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
+        }
+        catch (ex) {
+          alert('Failed to classify: ' + (ex.message || ex.toString()));
+        }
+      };
+    })();
+
+
     // function incrementEventCount(){
     //   let counterElement = document.getElementById("num-observed-events")
     //   let eventCount = parseInt(counterElement.innerHTML)
     //   counterElement.innerHTML = eventCount + 1;
     // }
-    
-    function updateFieldIfNotNull(fieldName, value, precision=10){
+
+    function updateFieldIfNotNull(fieldName, value, precision = 10) {
       if (value != null)
         document.getElementById(fieldName).innerHTML = value.toFixed(precision);
     }
-    
+
     function handleMotion(event) {
 
       tabelcaSpelca.push(event.accelerationIncludingGravity.x)
       tabelcaSpelca.push(event.accelerationIncludingGravity.y)
       tabelcaSpelca.push(event.accelerationIncludingGravity.z)
 
-      document.getElementById("test1").innerHTML = "namerjeni podatki " +tabelcaSpelca;
-      document.getElementById("test2").innerHTML = "dolzina tabelce " +tabelcaSpelca.length;
+      document.getElementById("test1").innerHTML = "namerjeni podatki " + tabelcaSpelca;
+      document.getElementById("test2").innerHTML = "dolzina tabelce " + tabelcaSpelca.length;
       if (tabelcaSpelca.length == 540) {
-        document.getElementById("test3").innerHTML = "dolzina 540" 
-          is_running = false;
-          var features = tabelcaSpelca;
-                console.log("features",features)
-                let res = classifier.classify(features);
-                document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
-          tabelcaSpelca = [];
-          //document.getElementById("test4").innerHTML = "dolzina tabelce nova" +tabelcaSpelca.length;
-        }
+        document.getElementById("test3").innerHTML = "dolzina 540"
+        is_running = false;
+        var features = tabelcaSpelca;
+        document.getElementById("test4").innerHTML = "features" + features;
+
+        console.log("features", features)
+        let res = classifier.classify(features);
+        document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
+        tabelcaSpelca = [];
+        //document.getElementById("test4").innerHTML = "dolzina tabelce nova" +tabelcaSpelca.length;
+      }
 
 
       updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
       updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
       updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
-    
+
       // updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
       // updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
       // updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
-    
+
       updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
-  
+
     }
-    
+
     let is_running = false;
     let demo_button = document.getElementById("start_demo");
-    demo_button.onclick = function(e) {
-      console.log("tabelcaSpelca",tabelcaSpelca)
+    demo_button.onclick = function (e) {
+      console.log("tabelcaSpelca", tabelcaSpelca)
 
       e.preventDefault();
-      
+
       // Request permission for iOS 13+ devices
       if (
         DeviceMotionEvent &&
@@ -172,33 +174,33 @@
       }
 
       var len = 0;
-      
-      if (is_running){
+
+      if (is_running) {
         window.removeEventListener("devicemotion", handleMotion);
         demo_button.innerHTML = "Start demo";
         demo_button.classList.add('btn-success');
         demo_button.classList.remove('btn-danger');
         is_running = false;
 
-        
 
 
-        
-      }else{
+
+
+      } else {
 
         window.addEventListener("devicemotion", handleMotion);
         document.getElementById("start_demo").innerHTML = "Stop demo";
         demo_button.classList.remove('btn-success');
         demo_button.classList.add('btn-danger');
         is_running = true;
-        
+
 
       }
     };
-    
 
-    
-    </script>
+
+
+  </script>
 
 </body>
 
