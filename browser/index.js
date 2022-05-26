@@ -26,7 +26,7 @@ function klasificiraj(tabelcaSpelca) {
   classifier2.init();
   let res = classifier2.classify(tabelcaSpelca);
 
-  document.querySelector("#results").textContent = JSON.stringify(res, null, 4);
+  // document.querySelector("#results").textContent = JSON.stringify(res, null, 4);
 
   var max = 0;
   var max_label;
@@ -37,8 +37,8 @@ function klasificiraj(tabelcaSpelca) {
     }
   }
 
-  document.getElementById("test1").innerHTML = max;
-  document.getElementById("test2").innerHTML = max_label;
+  // document.getElementById("test1").innerHTML = max;
+  // document.getElementById("test2").innerHTML = max_label;
 
   if(max_label == "desno grdo zavijanje"){
     badRightTurnDaily++;
@@ -68,8 +68,8 @@ function handleMotion(event) {
   tabelcaSpelca.push(event.accelerationIncludingGravity.z);
 
   // CHECK REZ
-  document.getElementById("test3").innerHTML =
-    "dolzina tabelce " + tabelcaSpelca.length;
+  // document.getElementById("test3").innerHTML =
+  //   "dolzina tabelce " + tabelcaSpelca.length;
 
   if (tabelcaSpelca.length > 540) {
     klasificiraj(tabelcaSpelca);
