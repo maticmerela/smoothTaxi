@@ -126,10 +126,12 @@
     }
 
     function klasificiraj(tabelcaSpelca) {
-      document.getElementById("test3").innerHTML = "smo v funkciji klasificiraj haha topaja"
       var features = tabelcaSpelca;
       console.log("features", features)
       let res = classifier.classify(features);
+      document.getElementById("test4").innerHTML = "classifier: ", classifier;
+      document.getElementById("test3").innerHTML = "result po klasifikaciji ", res;
+
       document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
 
     }
