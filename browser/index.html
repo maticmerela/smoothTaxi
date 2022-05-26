@@ -20,6 +20,8 @@
 
 <body>
   <p id="results"></p>
+  <p id="test1">klasifikacija: </p>
+
   <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Začni meriti</a>
 
   <!-- <ul>
@@ -44,6 +46,7 @@
       var classifier2 = new EdgeImpulseClassifier();
       classifier2.init();
       let res = classifier2.classify(tabelcaSpelca);
+      document.getElementById("test1").innerHTML = res;
       document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
     }
 
@@ -56,8 +59,6 @@
       // document.getElementById("test2").innerHTML = "dolzina tabelce " + tabelcaSpelca.length;
 
       if (tabelcaSpelca.length > 540) {
-        document.getElementById("test1").innerHTML = "smo v ifu"
-
         klasificiraj(tabelcaSpelca)
         tabelcaSpelca = [];
       }
