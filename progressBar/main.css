@@ -1,3 +1,4 @@
+/* GENERAL */
 h2{
     /* color:aqua; */
     padding-bottom: 2rem;
@@ -22,7 +23,7 @@ h2{
 }
 
 
-/* Real time slider */
+/* REAL TIME SLIDER */
 
 .slidecontainer {
     width: 100%; /* Width of the outside container */
@@ -61,4 +62,66 @@ h2{
     height: 25px; /* Slider handle height */
     background: rgb(37, 139, 175); /* Green background */
     cursor: pointer; /* Cursor on hover */
+  }
+
+  /* PROGRESS BAR */
+  body {
+    font-family: "Roboto", sans-serif;
+    background:#d2eaf1;
+  }
+  
+  .circle-wrap {
+    margin: 30px auto;
+    width: 100px;
+    height: 100px;
+    background: #fefcff;
+    border-radius: 50%;
+    border: 1px solid #cdcbd0;
+  }
+
+  .circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.mask .fill {
+  clip: rect(0px, 50px, 100px, 0px);
+  background-color: rgb(37, 139, 175);
+}
+
+.circle-wrap .circle .mask {
+    clip: rect(0px, 100px, 100px, 50px);
+  }
+  
+  .mask.full,
+  .circle .fill {
+    transform: rotate(135deg);
+  }
+  
+  @keyframes fill{
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(135deg);
+    }
+  }
+
+  .circle-wrap .inside-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #d2eaf1;
+    line-height: 80px;
+    text-align: center;
+    margin-top: 9.3px;
+    margin-left: 9.3px;
+    color: rgb(5, 98, 132);
+    position: absolute;
+    z-index: 100;
+    font-weight: 700;
+    font-size: 1.5em;
   }
