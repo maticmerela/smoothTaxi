@@ -66,8 +66,8 @@
 
 
       document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
-      var max, max_label = getMax(res);
-      document.getElementById("test1").innerHTML = parseInt(res.results[i].value);
+      max, max_label = getMax(res);
+      document.getElementById("test1").innerHTML = max;
       document.getElementById("test2").innerHTML = max_label;
 
       // okay
