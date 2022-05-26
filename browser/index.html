@@ -46,7 +46,7 @@
       var classifier2 = new EdgeImpulseClassifier();
       classifier2.init();
       let res = classifier2.classify(tabelcaSpelca);
-      // document.getElementById("test1").innerHTML = res;
+      document.getElementById("test1").innerHTML = res.results[0].value;
       document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
     }
 
@@ -100,7 +100,7 @@
         is_running = false;
       } else {
         window.addEventListener("devicemotion", handleMotion);
-        document.getElementById("start_demo").innerHTML = "Stop demo";
+        document.getElementById("start_demo").innerHTML = "koncaj merjenje";
         demo_button.classList.remove('btn-success');
         demo_button.classList.add('btn-danger');
         is_running = true;
