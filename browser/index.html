@@ -3,148 +3,113 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Browser inference demo</title>
 
-  <style>
-    #features {
-      width: 50%;
-      font-size: 18px;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    #results {
-      font-family: monospace;
-      white-space: pre;
-    }
-  </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <title>Smooth Taxi</title>
 </head>
 
 <body>
+
+   <!-- Navbar with name of app -->
+   <nav class="navbar fixed-top navbar-dark bg-dark">
+    <!-- Navbar content -->
+    <span class="navbar-brand mb-0 h1 text-right">Smooth Taxi</span>
+</nav>
+
+<!-- Real-Time Feedback -->
+<div id="scoreRealTime" class="shadow p-3 mb-5 bg-white rounded">
+    <h4>Real-Time Feedback</h4>
+    <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    </div>
+</div>
+
+<!-- Overall Score -->
+<div id="scoreOverall" class="shadow p-3 mb-5 bg-white rounded">
+    <h4>Overall Score</h2>
+    
+    <!-- slider -->
+    <div id="barOverall" class="container">
+        <div class="circle-wrap">
+            <div class="circle">
+                
+                <div class="mask half">
+                    <div class="fill"></div>
+                </div>
+
+                <div class="mask full">
+                    <div class="fill"></div>
+                 </div>
+
+            </div>
+            <div class="inside-circle"> 75% </div>
+          </div>
+    </div>
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm">
+                <h3 id="goodRightTurnOverall">0</h3>
+                <h6>Good Right Turn</h6>
+            </div>
+            <div class="col-sm">
+                <h3 id="badRightTurnOverall">0</h3>
+                <h6>Bad Right Turn</h6>
+            </div>
+            <div class="col-sm">
+                <h3 id="goodLeftTurnOverall">0</h3>
+                <h6>Good Left Turn</h6>
+            </div>
+            <div class="col-sm">
+                <h3 id="badLeftTurnOverall">0</h3>
+                <h6>Bad Left Turn</h6>
+            </div>
+            <div class="col-sm">
+              <h3 id="smoothBrakingOverall">0</h3>
+              <h6>Smooth Breaking</h6>
+          </div>
+          <div class="col-sm">
+            <h3 id="strongBreakingOverall">0</h3>
+            <h6>Strong Breaking</h6>
+        </div>
+        </div>
+    </div>
+</div>
+
   <p id="results"></p>
   <p id="test1">max: </p>
   <p id="test2">max label: </p>
   <p id="test3"></p>
 
-
-
   <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Začni meriti</a>
-
-  <!-- <ul>
-      <li>X-axis: <span id="Accelerometer_gx">0</span><span> m/s<sup>2</sup></span></li>
-      <li>Y-axis: <span id="Accelerometer_gy">0</span><span> m/s<sup>2</sup></span></li>
-      <li>Z-axis: <span id="Accelerometer_gz">0</span><span> m/s<sup>2</sup></span></li>
-    </ul> -->
 
   <script src="edge-impulse-standalone.js"></script>
   <script src="run-impulse.js"></script>
 
 
-  <script>
-    var tabelcaSpelca = [];
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
-    function updateFieldIfNotNull(fieldName, value, precision = 10) {
-      if (value != null)
-        document.getElementById(fieldName).innerHTML = value.toFixed(precision);
-    }
+    <!-- Personal JavaScript  -->
+    <script src="index.js"></script>
 
-
-    // function getMax(json) {
-    //   var max = 0;
-    //   var max_label;
-    //   for (var i = 0; i < json.results.length; i++) {
-    //     if (max == 0 || json.results[i].value > max) {
-    //       max = json.results[i].value;
-    //       max_label = json.results[i].label;
-    //     }
-    //   }
-    //   return max, max_label;
-    // }
-
-    function klasificiraj(tabelcaSpelca) {
-      var classifier2 = new EdgeImpulseClassifier();
-      classifier2.init();
-      let res = classifier2.classify(tabelcaSpelca);
-
-      document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
-
-      var max = 0;
-      var max_label;
-      for (var i = 0; i < res.results.length; i++) {
-        if (max == 0 || res.results[i].value > max) {
-          max = res.results[i].value;
-          max_label = res.results[i].label;
-        }
-      }
-      
-      document.getElementById("test1").innerHTML = max;
-      document.getElementById("test2").innerHTML = max_label;
-
-      
-
-      // okay
-    }
-
-    function handleMotion(event) {
-
-      tabelcaSpelca.push(event.accelerationIncludingGravity.x)
-      tabelcaSpelca.push(event.accelerationIncludingGravity.y)
-      tabelcaSpelca.push(event.accelerationIncludingGravity.z)
-
-      document.getElementById("test3").innerHTML = "dolzina tabelce " + tabelcaSpelca.length;
-
-      if (tabelcaSpelca.length > 540) {
-        klasificiraj(tabelcaSpelca)
-        tabelcaSpelca = [];
-      }
-
-
-      // updateFieldIfNotNull('Accelerometer_gx', event.accelerationIncludingGravity.x);
-      // updateFieldIfNotNull('Accelerometer_gy', event.accelerationIncludingGravity.y);
-      // updateFieldIfNotNull('Accelerometer_gz', event.accelerationIncludingGravity.z);
-
-      // updateFieldIfNotNull('Accelerometer_x', event.acceleration.x);
-      // updateFieldIfNotNull('Accelerometer_y', event.acceleration.y);
-      // updateFieldIfNotNull('Accelerometer_z', event.acceleration.z);
-
-      // updateFieldIfNotNull('Accelerometer_i', event.interval, 2);
-
-    }
-
-    // START OF CYCLE
-
-    let is_running = false;
-    let demo_button = document.getElementById("start_demo");
-    demo_button.onclick = function (e) {
-
-      e.preventDefault();
-
-      // Request permission for iOS 13+ devices
-      if (
-        DeviceMotionEvent &&
-        typeof DeviceMotionEvent.requestPermission === "function"
-      ) {
-        DeviceMotionEvent.requestPermission();
-      }
-
-      var len = 0;
-
-      if (is_running) {
-        window.removeEventListener("devicemotion", handleMotion);
-        demo_button.innerHTML = "Start demo";
-        demo_button.classList.add('btn-success');
-        demo_button.classList.remove('btn-danger');
-        is_running = false;
-      } else {
-        window.addEventListener("devicemotion", handleMotion);
-        document.getElementById("start_demo").innerHTML = "koncaj merjenje";
-        demo_button.classList.remove('btn-success');
-        demo_button.classList.add('btn-danger');
-        is_running = true;
-      }
-    };
-
-
-
-  </script>
 
   <!-- s t a r  s c r i p t  z a  k l a s i f i k a c i j o -->
   <!-- <script>
@@ -170,54 +135,6 @@
       };
     })();
   </script> -->
-
-  <script>
-    const obj = {
-    anomaly: 0,
-    results: [
-        {
-            label: "desno grdo zavijanje",
-            value: 0.0625
-        },
-        {
-            label: "desno lepo zavijanje",
-            value: 0.04296875
-        },
-        {
-            label: "levo grdo zavijanje",
-            value: 0.03125
-        },
-        {
-            label: "levo lepo zavijanje",
-            value: 0.046875
-        },
-        {
-            label: "mocno zaviranje 🚨",
-            value: 0.01953125
-        },
-        {
-            label: "sibko zaviranje ✅",
-            value: 0.14453125
-        },
-        {
-            label: "voznja",
-            value: 0.65234375
-        }
-    ]
-  };
-
-      var maximum = 0;
-      var maximum_label;
-      for (var i = 0; i < obj.results.length; i++) {
-        if (maximum == 0 || obj.results[i].value > max) {
-          maximum = obj.results[i].value;
-          maximum_label = obj.results[i].label;
-        }
-      }
-      console.log(maximum);
-      console.log(maximum_label);
-   
-  </script>
 
 </body>
 
