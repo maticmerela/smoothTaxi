@@ -37,8 +37,10 @@ function klasificiraj(tabelcaSpelca) {
     }
   }
 
-  document.getElementById("test1").innerHTML = max;
-  document.getElementById("test2").innerHTML = max_label;
+  // CHECK REZ 
+
+  // document.getElementById("test1").innerHTML = max;
+  // document.getElementById("test2").innerHTML = max_label;
 
 
 
@@ -82,8 +84,9 @@ function handleMotion(event) {
   tabelcaSpelca.push(event.accelerationIncludingGravity.y);
   tabelcaSpelca.push(event.accelerationIncludingGravity.z);
 
-  document.getElementById("test3").innerHTML =
-    "dolzina tabelce " + tabelcaSpelca.length;
+  // CHECK REZ
+  // document.getElementById("test3").innerHTML =
+  //   "dolzina tabelce " + tabelcaSpelca.length;
 
   if (tabelcaSpelca.length > 540) {
     klasificiraj(tabelcaSpelca);

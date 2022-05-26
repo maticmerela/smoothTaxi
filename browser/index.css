@@ -9,13 +9,26 @@ h2{
 }
 
 #scoreRealTime, #scoreOverall{
-    margin: 1.5rem;
+    margin: 1.5rem!important;
     padding: 1.5rem!important;
-    padding-bottom: 2rem!important;
 }
 
-#scoreRealTime{
+/* #scoreRealTime{
     margin-top: 5rem!important;
+} */
+
+#scoreOverall{
+  margin-top: 5rem!important;
+}
+
+#numbersOverall{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#start_demo{
+  background: rgb(37, 139, 175);
+  /* vertical-align: bottom; */
 }
 
 /* #barOverall{
