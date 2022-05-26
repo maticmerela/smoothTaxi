@@ -66,10 +66,10 @@
 
       var max = 0;
       var max_label;
-      for (var i = 0; i < json.results.length; i++) {
-        if (max == 0 || json.results[i].value > max) {
-          max = json.results[i].value;
-          max_label = json.results[i].label;
+      for (var i = 0; i < res.results.length; i++) {
+        if (max == 0 || res.results[i].value > max) {
+          max = res.results[i].value;
+          max_label = res.results[i].label;
         }
       }
       
