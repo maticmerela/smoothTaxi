@@ -22,6 +22,8 @@
   <p id="results"></p>
   <p id="test1">max: </p>
   <p id="test2">max label: </p>
+  <p id="test3"></p>
+
 
 
   <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Začni meriti</a>
@@ -34,7 +36,7 @@
 
   <script src="edge-impulse-standalone.js"></script>
   <script src="run-impulse.js"></script>
- 
+
 
   <script>
     var tabelcaSpelca = [];
@@ -46,21 +48,23 @@
 
 
     function getMax(json) {
-    var max;
-    var max_label;
-    for (var i=0 ; i<json.length ; i++) {
-        if (max == null || parseInt(json.results[i].value) > parseInt(max))
-            max = json.results[i].value;
-            max_label = json.results[i].label;
+      var max;
+      var max_label;
+      for (var i = 0; i < json.length; i++) {
+        if (max == null || json.results[i].value > max) {
+          max = json.results[i].value;
+          max_label = json.results[i].label;
+        }
+      }
+      return max, max_label;
     }
-    return max, max_label;
-}
+
     function klasificiraj(tabelcaSpelca) {
       var classifier2 = new EdgeImpulseClassifier();
       classifier2.init();
       let res = classifier2.classify(tabelcaSpelca);
 
-      
+
       document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
       max, max_label = getMax(res);
       document.getElementById("test1").innerHTML = parseInt(res.results[i].value);
@@ -73,7 +77,7 @@
       tabelcaSpelca.push(event.accelerationIncludingGravity.y)
       tabelcaSpelca.push(event.accelerationIncludingGravity.z)
 
-      // document.getElementById("test2").innerHTML = "dolzina tabelce " + tabelcaSpelca.length;
+      document.getElementById("test3").innerHTML = "dolzina tabelce " + tabelcaSpelca.length;
 
       if (tabelcaSpelca.length > 540) {
         klasificiraj(tabelcaSpelca)
@@ -129,7 +133,7 @@
   </script>
 
   <!-- s t a r  s c r i p t  z a  k l a s i f i k a c i j o -->
-   <!-- <script>
+  <!-- <script>
     (async () => {
       var classifier = new EdgeImpulseClassifier();
       await classifier.init();
