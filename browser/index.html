@@ -47,7 +47,23 @@
     }
 
 
-    function getMax(json) {
+    // function getMax(json) {
+    //   var max = 0;
+    //   var max_label;
+    //   for (var i = 0; i < json.results.length; i++) {
+    //     if (max == 0 || json.results[i].value > max) {
+    //       max = json.results[i].value;
+    //       max_label = json.results[i].label;
+    //     }
+    //   }
+    //   return max, max_label;
+    // }
+
+    function klasificiraj(tabelcaSpelca) {
+      var classifier2 = new EdgeImpulseClassifier();
+      classifier2.init();
+      let res = classifier2.classify(tabelcaSpelca);
+
       var max = 0;
       var max_label;
       for (var i = 0; i < json.results.length; i++) {
@@ -56,19 +72,11 @@
           max_label = json.results[i].label;
         }
       }
-      return max, max_label;
-    }
-
-    function klasificiraj(tabelcaSpelca) {
-      var classifier2 = new EdgeImpulseClassifier();
-      classifier2.init();
-      let res = classifier2.classify(tabelcaSpelca);
-
-
-      document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
-      max, max_label = getMax(res);
+      
       document.getElementById("test1").innerHTML = max;
       document.getElementById("test2").innerHTML = max_label;
+
+      document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
 
       // okay
     }
@@ -162,11 +170,51 @@
   </script> -->
 
   <script>
-    const obj = { name: "John", age: 30, balls: 4, city: "New York" };
-    console.log(obj.name);
-    const myJSON = JSON.stringify(obj);
-    console.log(myJSON.name);
+    const obj = {
+    anomaly: 0,
+    results: [
+        {
+            label: "desno grdo zavijanje",
+            value: 0.0625
+        },
+        {
+            label: "desno lepo zavijanje",
+            value: 0.04296875
+        },
+        {
+            label: "levo grdo zavijanje",
+            value: 0.03125
+        },
+        {
+            label: "levo lepo zavijanje",
+            value: 0.046875
+        },
+        {
+            label: "mocno zaviranje 🚨",
+            value: 0.01953125
+        },
+        {
+            label: "sibko zaviranje ✅",
+            value: 0.14453125
+        },
+        {
+            label: "voznja",
+            value: 0.65234375
+        }
+    ]
+  };
 
+      var maximum = 0;
+      var maximum_label;
+      for (var i = 0; i < obj.results.length; i++) {
+        if (maximum == 0 || obj.results[i].value > max) {
+          maximum = obj.results[i].value;
+          maximum_label = obj.results[i].label;
+        }
+      }
+      console.log(maximum);
+      console.log(maximum_label);
+   
   </script>
 
 </body>
