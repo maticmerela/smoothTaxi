@@ -40,21 +40,6 @@ function klasificiraj(tabelcaSpelca) {
   document.getElementById("test1").innerHTML = max;
   document.getElementById("test2").innerHTML = max_label;
 
-
-
-// {
-//     label: "mocno zaviranje 🚨",
-//     value: 0.01953125
-// },
-// {
-//     label: "sibko zaviranje ✅",
-//     value: 0.14453125
-// },
-// {
-//     label: "voznja",
-//     value: 0.65234375
-// }
-
   if(max_label == "desno grdo zavijanje"){
     badRightTurnDaily++;
     document.getElementById("badRightTurnDaily").innerHTML = badRightTurnDaily;
@@ -83,8 +68,8 @@ function handleMotion(event) {
   tabelcaSpelca.push(event.accelerationIncludingGravity.z);
 
   // CHECK REZ
-  // document.getElementById("test3").innerHTML =
-  //   "dolzina tabelce " + tabelcaSpelca.length;
+  document.getElementById("test3").innerHTML =
+    "dolzina tabelce " + tabelcaSpelca.length;
 
   if (tabelcaSpelca.length > 540) {
     klasificiraj(tabelcaSpelca);
