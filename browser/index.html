@@ -132,7 +132,7 @@
 
       document.getElementById("test1").innerHTML = "namerjeni podatki " + tabelcaSpelca;
       document.getElementById("test2").innerHTML = "dolzina tabelce " + tabelcaSpelca.length;
-      if (tabelcaSpelca.length == 540) {
+      if (tabelcaSpelca.length > 540) {
         document.getElementById("test3").innerHTML = "dolzina 540"
         is_running = false;
         var features = tabelcaSpelca;
