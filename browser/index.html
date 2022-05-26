@@ -48,11 +48,11 @@
 
 
     function getMax(json) {
-      var max;
+      var max = 0;
       var max_label;
-      for (var i = 0; i < json.length; i++) {
-        if (max == null || json.results[i].value > max) {
-          max = json.results[i].value;
+      for (var i = 0; i < Integer.parseInt(json.results.length); i++) {
+        if (max == 0 || Integer.parseInt(json.results[i].value) > max) {
+          max = Integer.parseInt(json.results[i].value);
           max_label = json.results[i].label;
         }
       }
@@ -66,9 +66,9 @@
 
 
       document.querySelector('#results').textContent = JSON.stringify(res, null, 4);
-      // max, max_label = getMax(res);
-      // document.getElementById("test1").innerHTML = parseInt(res.results[i].value);
-      // document.getElementById("test2").innerHTML = max_label;
+      var max, max_label = getMax(res);
+      document.getElementById("test1").innerHTML = parseInt(res.results[i].value);
+      document.getElementById("test2").innerHTML = max_label;
 
       // okay
     }
