@@ -74,30 +74,12 @@ function klasificiraj(tabelcaSpelca) {
 
   perc = percentage(vsota, vsotaGood);
   document.getElementById("percentage").innerHTML = perc;
-
-  krogec();
-
-  if(perc < 60){
-    document.getElementById('percentage').setAttribute('style', 'background: red');
-  }
 }
 
 function percentage(vsota, vsotaGood) {
   var perc = 100 * vsotaGood / vsota;
   var withoutDecimals = parseFloat(perc).toFixed(0) + "%";
   return withoutDecimals;
-}
-
-function deg(perc) {
-  var degrees = 180 * perc / 100;
-  var degWithout = parseFloat(degrees).toFixed(0);
-  return degWithout;
-}
-
-var degree = deg(perc);
-
-function krogec() {
-  document.getElementById('krogec').setAttribute('style', 'transform: rotate(degree)');
 }
 
 function handleMotion(event) {
