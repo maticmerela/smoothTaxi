@@ -78,7 +78,8 @@ function klasificiraj(tabelcaSpelca) {
 
 function percentage(vsota, vsotaGood) {
   var perc = 100 * vsotaGood / vsota + "%";
-  return perc;
+  var withoutDecimals = parseFloat(perc).toFixed(0)
+  return withoutDecimals;
 }
 
 function handleMotion(event) {
