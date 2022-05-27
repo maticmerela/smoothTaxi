@@ -77,7 +77,8 @@ function klasificiraj(tabelcaSpelca) {
 }
 
 function percentage(vsota, vsotaGood) {
-  return 100 * vsotaGood / vsota + "%";
+  var perc = 100 * vsotaGood / vsota + "%";
+  return perc;
 }
 
 function handleMotion(event) {
