@@ -110,7 +110,7 @@ h2{
   
   .mask.full,
   .circle .fill {
-    transform: rotate(90deg);
+    transform: rotate(180deg);
   }
   
   @keyframes fill{

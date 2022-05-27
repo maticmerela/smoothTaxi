@@ -75,11 +75,11 @@ function klasificiraj(tabelcaSpelca) {
   perc = percentage(vsota, vsotaGood);
   document.getElementById("percentage").innerHTML = perc;
 
-  krogec();
+  /*krogec();*/
 
-  if(perc < 60){
+  /*if(perc < 60){
     document.getElementById('percentage').setAttribute('style', 'background: red');
-  }
+  } */
 }
 
 function percentage(vsota, vsotaGood) {
@@ -88,6 +88,7 @@ function percentage(vsota, vsotaGood) {
   return withoutDecimals;
 }
 
+/*
 function deg(perc) {
   var degrees = 180 * perc / 100;
   var degWithout = parseFloat(degrees).toFixed(0);
@@ -98,7 +99,7 @@ var degree = deg(perc);
 
 function krogec() {
   document.getElementById('krogec').setAttribute('style', 'transform: rotate(degree)');
-}
+}*/
 
 function handleMotion(event) {
   tabelcaSpelca.push(event.accelerationIncludingGravity.x);
