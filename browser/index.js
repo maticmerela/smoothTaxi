@@ -74,6 +74,7 @@ function klasificiraj(tabelcaSpelca) {
   document.getElementById("percentage").innerHTML = perc;
 }
 
+//dela!!
 function percentage(vsota, vsotaGood) {
   var perc = 100 * vsotaGood / vsota;
   var withoutDecimals = parseFloat(perc).toFixed(0) + "%";
