@@ -76,6 +76,10 @@ function klasificiraj(tabelcaSpelca) {
   document.getElementById("percentage").innerHTML = perc;
 
   krogec();
+
+  if(perc < 60){
+    document.getElementById('percentage').setAttribute('style', 'background: red');
+  }
 }
 
 function percentage(vsota, vsotaGood) {
