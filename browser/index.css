@@ -118,7 +118,7 @@ h2{
       transform: rotate(0deg);
     }
     100% {
-      transform: rotate(135deg);
+      transform: rotate(90deg);
     }
   }
 
