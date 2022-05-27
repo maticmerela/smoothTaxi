@@ -18,6 +18,7 @@ var strongBreakingOverall = 0;
 
 var vsotaGood = 0;
 var vsota = 0;
+var perc = 0;
 
 function updateFieldIfNotNull(fieldName, value, precision = 10) {
   if (value != null)
@@ -71,13 +72,12 @@ function klasificiraj(tabelcaSpelca) {
   vsota++;
   document.getElementById("vsota").innerHTML = vsota;
 
-  percentage(vsota, vsotaGood);
-
+  perc = percentage(vsota, vsotaGood);
+  document.getElementById("percentage").innerHTML = perc;
 }
 
 function percentage(vsota, vsotaGood) {
-  var perc =  100 * vsotaGood / vsota;
-  document.body.innerHTML = perc + "%";
+  return 100 * vsotaGood / vsota;
 }
 
 function handleMotion(event) {
