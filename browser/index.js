@@ -16,6 +16,9 @@ var badLeftTurnOverall = 0;
 var smoothBrakingOverall = 0;
 var strongBreakingOverall = 0;
 
+var vsotaGood = 0;
+var vsota = 0;
+
 function updateFieldIfNotNull(fieldName, value, precision = 10) {
   if (value != null)
     document.getElementById(fieldName).innerHTML = value.toFixed(precision);
@@ -59,6 +62,12 @@ function klasificiraj(tabelcaSpelca) {
     smoothBrakingOverall++;
     document.getElementById("smoothBrakingOverall").innerHTML = smoothBrakingOverall;
   }
+
+  if(max_label == "desno lepo zavijanje" || max_label == "levo lepo zavijanje" || max_label == "sibko zaviranje"){
+    vsotaGood++;
+  }
+
+  vsota++;
 
 }
 
