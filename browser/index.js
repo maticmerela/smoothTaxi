@@ -82,6 +82,18 @@ function percentage(vsota, vsotaGood) {
   return withoutDecimals;
 }
 
+function deg(perc) {
+  var degrees = 180 * perc / 100;
+  var degWithout = parseFloat(degrees).toFixed(0);
+  return degWithout;
+}
+
+var degree = deg(perc);
+
+function circle() {
+  document.getElementById('circle').setAttribute('style', 'transform: rotate(degree)');
+}
+
 function handleMotion(event) {
   tabelcaSpelca.push(event.accelerationIncludingGravity.x);
   tabelcaSpelca.push(event.accelerationIncludingGravity.y);
