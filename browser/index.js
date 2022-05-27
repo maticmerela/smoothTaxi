@@ -66,11 +66,9 @@ function klasificiraj(tabelcaSpelca) {
 
   if(max_label == "desno lepo zavijanje" || max_label == "levo lepo zavijanje" || max_label == "sibko zaviranje"){
     vsotaGood++;
-    document.getElementById("vsotaGood").innerHTML = vsotaGood;
   }
 
   vsota++;
-  document.getElementById("vsota").innerHTML = vsota;
 
   perc = percentage(vsota, vsotaGood);
   document.getElementById("percentage").innerHTML = perc;
