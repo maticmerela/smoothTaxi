@@ -71,6 +71,13 @@ function klasificiraj(tabelcaSpelca) {
   vsota++;
   document.getElementById("vsota").innerHTML = vsota;
 
+  percentage(vsota, vsotaGood);
+
+}
+
+function percentage(vsota, vsotaGood) {
+  var perc =  100 * vsotaGood / vsota;
+  document.body.innerHTML = perc + "%";
 }
 
 function handleMotion(event) {
