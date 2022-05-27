@@ -9,8 +9,8 @@
 
 var tabelcaSpelca = [];
 
-var badRightTurnDaily = 0;
-var goodRightTurnDaily = 0;
+var badRightTurnOverall = 0;
+var goodRightTurnOverall = 0;
 var goodLeftTurnOverall = 0;
 var badLeftTurnOverall = 0;
 var smoothBrakingOverall = 0;
@@ -42,10 +42,10 @@ function klasificiraj(tabelcaSpelca) {
 
   if(max_label == "desno grdo zavijanje"){
     badRightTurnDaily++;
-    document.getElementById("badRightTurnDaily").innerHTML = badRightTurnDaily;
+    document.getElementById("badRightTurnOverall").innerHTML = badRightTurnOverall;
   } else if(max_label == "desno lepo zavijanje"){
     goodRightTurnDaily++;
-    document.getElementById("goodRightTurnDaily").innerHTML = goodRightTurnDaily;
+    document.getElementById("goodRightTurnOverall").innerHTML = goodRightTurnOverall;
   } else if(max_label == "levo grdo zavijanje"){
     badLeftTurnOverall++;
     document.getElementById("badLeftTurnOverall").innerHTML = badLeftTurnOverall;
