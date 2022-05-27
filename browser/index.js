@@ -74,6 +74,8 @@ function klasificiraj(tabelcaSpelca) {
 
   perc = percentage(vsota, vsotaGood);
   document.getElementById("percentage").innerHTML = perc;
+
+  krogec();
 }
 
 function percentage(vsota, vsotaGood) {
@@ -90,8 +92,8 @@ function deg(perc) {
 
 var degree = deg(perc);
 
-function circle() {
-  document.getElementById('circle').setAttribute('style', 'transform: rotate(degree)');
+function krogec() {
+  document.getElementById('krogec').setAttribute('style', 'transform: rotate(degree)');
 }
 
 function handleMotion(event) {
