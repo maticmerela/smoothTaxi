@@ -44,25 +44,35 @@ function klasificiraj(tabelcaSpelca) {
   // document.getElementById("test1").innerHTML = max_label.substring(0,);
   // document.getElementById("test2").innerHTML = max_label;
 
-  if(max_label == "desno grdo zavijanje"){
-    badRightTurnDaily++;
-    document.getElementById("badRightTurnOverall").innerHTML = badRightTurnOverall;
-  } else if(max_label == "desno lepo zavijanje"){
-    goodRightTurnDaily++;
-    document.getElementById("goodRightTurnOverall").innerHTML = goodRightTurnOverall;
-  } else if(max_label == "levo grdo zavijanje"){
-    badLeftTurnOverall++;
-    document.getElementById("badLeftTurnOverall").innerHTML = badLeftTurnOverall;
-  } else if(max_label == "levo lepo zavijanje"){
+  // if(max_label == "desno grdo zavijanje"){
+  //   badRightTurnDaily++;
+  //   document.getElementById("badRightTurnOverall").innerHTML = badRightTurnOverall;
+  // } else if(max_label == "desno lepo zavijanje"){
+  //   goodRightTurnDaily++;
+  //   document.getElementById("goodRightTurnOverall").innerHTML = goodRightTurnOverall;
+  // } else if(max_label == "levo grdo zavijanje"){
+  //   badLeftTurnOverall++;
+  //   document.getElementById("badLeftTurnOverall").innerHTML = badLeftTurnOverall;
+  // } else if(max_label == "levo lepo zavijanje"){
+  //   goodLeftTurnOverall++;
+  //   document.getElementById("goodLeftTurnOverall").innerHTML = goodLeftTurnOverall;
+  // } else if(max_label == "mocno zaviranje 🚨"){
+  //   strongBreakingOverall++;
+  //   document.getElementById("strongBreakingOverall").innerHTML = strongBreakingOverall;
+  // } else if(max_label == "sibko zaviranje ✅"){
+  //   smoothBrakingOverall++;
+  //   document.getElementById("smoothBrakingOverall").innerHTML = smoothBrakingOverall;
+  // }
+
+  // goodLeftTurnOverall++;
+  // document.getElementById("goodLeftTurnOverall").innerHTML = goodLeftTurnOverall; 
+
+  setTimeout(function(){ 
     goodLeftTurnOverall++;
-    document.getElementById("goodLeftTurnOverall").innerHTML = goodLeftTurnOverall;
-  } else if(max_label == "mocno zaviranje 🚨"){
-    strongBreakingOverall++;
-    document.getElementById("strongBreakingOverall").innerHTML = strongBreakingOverall;
-  } else if(max_label == "sibko zaviranje ✅"){
-    smoothBrakingOverall++;
-    document.getElementById("smoothBrakingOverall").innerHTML = smoothBrakingOverall;
-  }
+    document.getElementById("goodLeftTurnOverall").innerHTML = goodLeftTurnOverall; 
+  }, 2000);
+
+
 
   if(max_label == "desno lepo zavijanje" || max_label == "levo lepo zavijanje" || max_label == "sibko zaviranje ✅" || max_label == "desno grdo zavijanje" || max_label == "levo grdo zavijanje" || max_label == "mocno zaviranje 🚨"){
     if(max_label == "desno lepo zavijanje" || max_label == "levo lepo zavijanje" || max_label == "sibko zaviranje"){
