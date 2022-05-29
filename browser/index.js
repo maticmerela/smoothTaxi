@@ -17,7 +17,7 @@ var smoothBrakingOverall = 0;
 var strongBreakingOverall = 0;
 
 var vsotaGood = 0;
-var vsota = 0.00000001;
+var vsota = 0;
 var perc = 0;
 
 function updateFieldIfNotNull(fieldName, value, precision = 10) {
