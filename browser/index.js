@@ -45,10 +45,10 @@ function klasificiraj(tabelcaSpelca) {
   // document.getElementById("test2").innerHTML = max_label;
 
   if(max_label == "desno grdo zavijanje"){
-    badRightTurnDaily++;
+    badRightTurnOverall++;
     document.getElementById("badRightTurnOverall").innerHTML = badRightTurnOverall;
   } else if(max_label == "desno lepo zavijanje"){
-    goodRightTurnDaily++;
+    goodRightTurnOverall++;
     document.getElementById("goodRightTurnOverall").innerHTML = goodRightTurnOverall;
   } else if(max_label == "levo grdo zavijanje"){
     badLeftTurnOverall++;
