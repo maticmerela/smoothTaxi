@@ -121,7 +121,7 @@ demo_button.onclick = function (e) {
     is_running = false;
   } else {
     window.addEventListener("devicemotion", handleMotion);
-    document.getElementById("start_demo").innerHTML = "Koncaj meriti";
+    document.getElementById("start_demo").innerHTML = "Končaj merjenje";
     demo_button.classList.remove("btn-success");
     demo_button.classList.add("btn-danger");
     is_running = true;

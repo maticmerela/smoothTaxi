@@ -4,6 +4,9 @@ h2{
     padding-bottom: 2rem;
 }
 
+h4{
+  text-align: center;
+}
 .container {
     text-align:center;
 }
@@ -27,7 +30,8 @@ h2{
 }
 
 #start_demo{
-  background: rgb(37, 139, 175);
+  background: #ffc107;
+  color: #212529;
 }
 
 /* #barOverall{
@@ -79,7 +83,12 @@ h2{
   /* PROGRESS BAR */
   body {
     font-family: "Roboto", sans-serif;
-    background:#d2eaf1;
+    background:#efefef;
+  }
+
+  .btn-success {
+    color: #fff;
+    border-color: #ffc107;
   }
   
   .circle-wrap {
@@ -88,7 +97,7 @@ h2{
     height: 100px;
     background: #fefcff;
     border-radius: 50%;
-    border: 1px solid #cdcbd0;
+    /* border: 1px solid #cdcbd0; */
   }
 
   .circle-wrap .circle .mask,
@@ -101,7 +110,7 @@ h2{
 
 .mask .fill {
   clip: rect(0px, 50px, 100px, 0px);
-  background-color: rgb(37, 139, 175);
+  background-color: #ffc107;
 }
 
 .circle-wrap .circle .mask {
@@ -126,12 +135,12 @@ h2{
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: #d2eaf1;
+    background: #fff9e7;
     line-height: 80px;
     text-align: center;
     margin-top: 9.3px;
     margin-left: 9.3px;
-    color: rgb(5, 98, 132);
+    color: 212529;
     position: absolute;
     z-index: 100;
     font-weight: 700;
