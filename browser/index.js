@@ -41,7 +41,7 @@ function klasificiraj(tabelcaSpelca) {
     }
   }
 
-  // document.getElementById("test1").innerHTML = max;
+  document.getElementById("test1").innerHTML = max_label.substring(0,15);
   document.getElementById("test2").innerHTML = max_label;
 
   if(max_label == "desno grdo zavijanje"){
