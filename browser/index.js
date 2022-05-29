@@ -91,7 +91,7 @@ function handleMotion(event) {
   // document.getElementById("test3").innerHTML =
   //   "dolzina tabelce " + tabelcaSpelca.length;
 
-  if (tabelcaSpelca.length > 540) {
+  if (tabelcaSpelca.length > 900) {
     klasificiraj(tabelcaSpelca);
     tabelcaSpelca = [];
   }
