@@ -1,16 +1,8 @@
 # smoothTaxi
-# tvoja mater
 
-# zazeni app z: npm start
+# start app locally with: 
+npm install
+npm start
 
-# push na github:
-git add .
-git commit -m "tvoj ocka"
-git push
-
-# push na heroku
-git add .
-git commit -m "tvoj ocka"
-git push heroku main
-
-# poglej app na heroku: https://smoothtaxisaxy.herokuapp.com/ obvezno dodaj httpSSSSSS ce ni po defaultu
+# heroku link (it is necessary to add an "s" to http link!!)
+https://smoothtaxisaxy.herokuapp.com/
