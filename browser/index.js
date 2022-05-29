@@ -67,12 +67,8 @@ function klasificiraj(tabelcaSpelca) {
   // goodLeftTurnOverall++;
   // document.getElementById("goodLeftTurnOverall").innerHTML = goodLeftTurnOverall; 
 
-  setTimeout(function(){ 
     goodLeftTurnOverall++;
     document.getElementById("goodLeftTurnOverall").innerHTML = goodLeftTurnOverall; 
-  }, 10000);
-
-
 
   if(max_label == "desno lepo zavijanje" || max_label == "levo lepo zavijanje" || max_label == "sibko zaviranje ✅" || max_label == "desno grdo zavijanje" || max_label == "levo grdo zavijanje" || max_label == "mocno zaviranje 🚨"){
     if(max_label == "desno lepo zavijanje" || max_label == "levo lepo zavijanje" || max_label == "sibko zaviranje"){
@@ -91,6 +87,8 @@ function percentage(vsota, vsotaGood) {
   var withoutDecimals = parseFloat(perc).toFixed(0) + "%";
   return withoutDecimals;
 }
+
+
 
 function handleMotion(event) {
   tabelcaSpelca.push(event.accelerationIncludingGravity.x);
