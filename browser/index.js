@@ -70,7 +70,7 @@ function klasificiraj(tabelcaSpelca) {
   setTimeout(function(){ 
     goodLeftTurnOverall++;
     document.getElementById("goodLeftTurnOverall").innerHTML = goodLeftTurnOverall; 
-  }, 2000);
+  }, 10000);
 
 
 
