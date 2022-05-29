@@ -8,19 +8,31 @@ h2{
     text-align:center;
 }
 
-#scoreRealTime, #scoreDaily, #scoreOverall{
-    margin: 2rem;
-    padding: 2rem!important;
-    padding-bottom: 3rem!important;
+#scoreRealTime, #scoreOverall{
+    margin: 1.5rem!important;
+    padding: 1.5rem!important;
 }
 
-#scoreRealTime{
-    margin-top: 6rem!important;
+/* #scoreRealTime{
+    margin-top: 5rem!important;
+} */
+
+#scoreOverall{
+  margin-top: 5rem!important;
 }
 
-#barDaily{
-    padding-bottom: 4rem;
+#numbersOverall{
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
+
+#start_demo{
+  background: rgb(37, 139, 175);
+}
+
+/* #barOverall{
+    padding-bottom: 0rem;
+} */
 
 
 /* REAL TIME SLIDER */
@@ -98,7 +110,7 @@ h2{
   
   .mask.full,
   .circle .fill {
-    transform: rotate(135deg);
+    transform: rotate(180deg);
   }
   
   @keyframes fill{
