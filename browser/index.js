@@ -64,11 +64,12 @@ function klasificiraj(tabelcaSpelca) {
     document.getElementById("smoothBrakingOverall").innerHTML = smoothBrakingOverall;
   }
 
-  if(max_label == "desno lepo zavijanje" || max_label == "levo lepo zavijanje" || max_label == "sibko zaviranje"){
-    vsotaGood++;
+  if(max_label == "desno lepo zavijanje" || max_label == "levo lepo zavijanje" || max_label == "sibko zaviranje ✅" || max_label == "desno grdo zavijanje" || max_label == "levo grdo zavijanje" || max_label == "mocno zaviranje 🚨"){
+    if(max_label == "desno lepo zavijanje" || max_label == "levo lepo zavijanje" || max_label == "sibko zaviranje"){
+      vsotaGood++;
+    }
+    vsota++;
   }
-
-  vsota++;
 
   perc = percentage(vsota, vsotaGood);
   document.getElementById("percentage").innerHTML = perc;
