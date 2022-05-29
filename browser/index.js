@@ -17,7 +17,7 @@ var smoothBrakingOverall = 0;
 var strongBreakingOverall = 0;
 
 var vsotaGood = 0;
-var vsota = 0;
+var vsota = 0.00000001;
 var perc = 0;
 
 function updateFieldIfNotNull(fieldName, value, precision = 10) {
@@ -87,11 +87,9 @@ function klasificiraj(tabelcaSpelca) {
 
 //dela!!
 function percentage(vsota, vsotaGood) {
-  if(vsota != 0){
-    var perc = 100 * vsotaGood / vsota;
-    var withoutDecimals = parseFloat(perc).toFixed(0) + "%";
-    return withoutDecimals;
-  }
+  var perc = 100 * vsotaGood / vsota;
+  var withoutDecimals = parseFloat(perc).toFixed(0) + "%";
+  return withoutDecimals;
 }
 
 function handleMotion(event) {
